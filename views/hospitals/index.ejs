@@ -1,0 +1,37 @@
+<%- include('../layout') %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Hospitals</h2>
+    <a href="/hospitals/new" class="btn btn-primary">Add New Hospital</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Hospital Name</th>
+                <th>Location</th>
+                <th>Number of Doctors</th>
+                <th>Number of Beds</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% hospitals.forEach(hospital => { %>
+                <tr>
+                    <td><%= hospital.hospitalName %></td>
+                    <td><%= hospital.location %></td>
+                    <td><%= hospital.numberOfDoctors %></td>
+                    <td><%= hospital.numberOfBed %></td>
+                    <td>
+                        <a href="/hospitals/<%= hospital._id %>" class="btn btn-sm btn-info">View</a>
+                        <a href="/hospitals/<%= hospital._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/hospitals/<%= hospital._id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this hospital?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div> 

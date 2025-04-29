@@ -1,0 +1,64 @@
+<%- include('../layout') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Add New Hospital</h3>
+            </div>
+            <div class="card-body">
+                <form action="/hospitals" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="hospitalName" class="form-label">Hospital Name</label>
+                        <input type="text" class="form-control" id="hospitalName" name="hospitalName" required>
+                        <div class="invalid-feedback">
+                            Please enter the hospital name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" required>
+                        <div class="invalid-feedback">
+                            Please enter the hospital location.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numberOfDoctors" class="form-label">Number of Doctors</label>
+                        <input type="number" class="form-control" id="numberOfDoctors" name="numberOfDoctors" required min="1">
+                        <div class="invalid-feedback">
+                            Please enter the number of doctors.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="numberOfBed" class="form-label">Number of Beds</label>
+                        <input type="number" class="form-control" id="numberOfBed" name="numberOfBed" required min="1">
+                        <div class="invalid-feedback">
+                            Please enter the number of beds.
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Add Hospital</button>
+                        <a href="/hospitals" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Form validation
+(function () {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script> 

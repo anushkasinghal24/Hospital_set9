@@ -1,0 +1,36 @@
+<%- include('../layout') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Hospital Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Hospital Name:</div>
+                    <div class="col-md-8"><%= hospital.hospitalName %></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Location:</div>
+                    <div class="col-md-8"><%= hospital.location %></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Number of Doctors:</div>
+                    <div class="col-md-8"><%= hospital.numberOfDoctors %></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Number of Beds:</div>
+                    <div class="col-md-8"><%= hospital.numberOfBed %></div>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="/hospitals/<%= hospital._id %>/edit" class="btn btn-warning me-md-2">Edit</a>
+                    <form action="/hospitals/<%= hospital._id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this hospital?')">Delete</button>
+                    </form>
+                    <a href="/hospitals" class="btn btn-secondary ms-md-2">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
